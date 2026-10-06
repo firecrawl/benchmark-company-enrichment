@@ -1,0 +1,28 @@
+# Secrets. .env.example is the template and IS tracked; .env never is.
+.env
+.env.*
+!.env.example
+
+# Run output. Raw provider answers are the provider's data and the artifact of YOUR run, not of the repo:
+# keep them locally (--resume reads them from here), never commit them.
+company_enrichment/runs/
+runs/
+
+# Held-back answer key. Only the public sample ships; the full set stays private so a provider cannot tune to it.
+# Belt and braces in case a full set is copied in locally to re-run the dataset tests against it.
+company_enrichment/gt/companies_full_v*.jsonl
+company_enrichment/gt/industry_grades_full_v*.jsonl
+company_enrichment/gt/hq_metro_full_v*.json
+
+__pycache__/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+
+env/
+venv/
+.venv/
+
+.DS_Store
+.idea/
+.vscode/

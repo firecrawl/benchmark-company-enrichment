@@ -1,0 +1,32 @@
+[project]
+name = "company-enrichment-benchmark"
+version = "1.0.0"
+description = "Company Enrichment: a benchmark for company data providers (headquarters, industry, employees, founding year, LinkedIn page, ticker, revenue)"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+
+# ONLY WHAT THIS TREE IMPORTS (tests/test_portability.py checks it). tldextract is pinned because its bundled Public
+# Suffix List decides which registrable domain a provider's website is, and a different snapshot could move a
+# wrong-company verdict. Provider APIs are reached over plain HTTP: adding a provider needs a URL, not a dependency.
+dependencies = [
+    "tldextract==5.3.2",   # registrable domains, from the bundled suffix list (no network)
+]
+
+[project.optional-dependencies]
+judges = ["anthropic>=0.70"]   # only to grade industry labels nobody has graded yet (--judge)
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+company-enrichment = "company_enrichment.run_eval:main"
+company-enrichment-report = "company_enrichment.scorer.report_metrics:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["company_enrichment"]
+
+[tool.pytest.ini_options]
+testpaths = ["company_enrichment/tests"]

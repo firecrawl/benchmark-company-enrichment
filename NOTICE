@@ -1,0 +1,31 @@
+Company Enrichment benchmark
+Copyright (c) 2026 Firecrawl
+
+Code: MIT License (LICENSE). Data compiled by Firecrawl in company_enrichment/gt/ and benchmark/results/: CC BY 4.0
+(LICENSE-DATA). The material below is not covered by either license and stays under its owners' terms.
+
+US government records
+  Answer-key values for public companies are taken from SEC EDGAR filings, and for private companies from the US
+  Department of Labor's PERM disclosure data and Form 5500 filings. Metro areas are the US Census Bureau's Core Based
+  Statistical Areas. These are works of the US federal government; the quotes from them are included to cite the
+  source of each value.
+
+Company websites
+  Quotes and short descriptions taken from companies' own websites (the "quote" and "description" fields in
+  company_enrichment/gt/) remain the property of those companies. They are included only to show where each
+  answer-key value comes from.
+
+LinkedIn industry list
+  company_enrichment/gt/linkedin_industries.json lists LinkedIn's industry codes, names and descriptions, from
+  Microsoft Learn: https://learn.microsoft.com/en-us/linkedin/shared/references/reference-tables/industry-codes and
+  https://learn.microsoft.com/en-us/linkedin/shared/references/reference-tables/industry-codes-v2.
+  LinkedIn is a trademark of LinkedIn Corporation.
+
+OpenStreetMap
+  The optional --geocode lookup for cities missing from the metro table uses OpenStreetMap's Nominatim service.
+  Data (c) OpenStreetMap contributors, available under the Open Database License (https://www.openstreetmap.org/copyright).
+
+Trademarks
+  Apollo.io, Ocean.io, People Data Labs, ContactOut, FullEnrich, Data Legion and the other names in this repository are
+  trademarks of their owners and are used only to identify the providers tested. No provider endorses or sponsors
+  this benchmark.

@@ -1,0 +1,349 @@
+{
+ "rule": "Answer-key corrections after the provider calls, each a factual error proven by a primary source, decided without regard to which provider it helps and applied to every provider. Corrections on held-out companies are counted by field so the held-out half stays unpublished.",
+ "date": "2026-10-05",
+ "total": 67,
+ "public_sample": [
+  {
+   "company_id": "P043036496",
+   "field": "employees",
+   "reason": "outside the benchmark's scope (foreign parent, listed parent or foreign offices): the federal filings count only the US payroll, so the employee field is not graded",
+   "source_url": "https://www.dimins.com/how-to-contact-dimensional-insight/",
+   "quote": "offices in four foreign countries: 'Dimensional Insight Netherlands BV', 'Dimensional Insight Germany', 'Dimensional Insight Norway', 'People's Republic of China'",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "P812565146",
+   "field": "employees",
+   "reason": "outside the benchmark's scope (foreign parent, listed parent or foreign offices): the federal filings count only the US payroll, so the employee field is not graded",
+   "source_url": "https://www.cepton.com/company-2024/about-us",
+   "quote": "As a Koito Group company, Cepton's approach to lidar development is backed by long-standing OEM collaboration",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "P823174332",
+   "field": "employees",
+   "reason": "outside the benchmark's scope (foreign parent, listed parent or foreign offices): the federal filings count only the US payroll, so the employee field is not graded",
+   "source_url": "https://www.clumio.com/",
+   "quote": "© 2026 Clumio, Inc. A Commvault company",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "P461294512",
+   "field": "employees",
+   "reason": "outside the benchmark's scope (foreign parent, listed parent or foreign offices): the federal filings count only the US payroll, so the employee field is not graded",
+   "source_url": "https://tulip.co/press/built-in-best-places-to-work-2026/",
+   "quote": "Tulip is headquartered in Somerville, MA, with offices in Munich, Budapest, Singapore, Tel Aviv, and Tokyo.",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "P812565146",
+   "field": "company",
+   "reason": "the parent group is recorded, so a provider record about the parent is the wrong company",
+   "source_url": "https://www.cepton.com/company-2024/about-us",
+   "quote": "As a Koito Group company, Cepton's approach to lidar development is backed by long-standing OEM collaboration",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "P823174332",
+   "field": "company",
+   "reason": "the parent group is recorded, so a provider record about the parent is the wrong company",
+   "source_url": "https://www.clumio.com/",
+   "quote": "© 2026 Clumio, Inc. A Commvault company",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "P371663146",
+   "field": "founded",
+   "reason": "the company's own site states an earlier or the only consistent start: 1998",
+   "source_url": "https://www.equitymethods.com/about-us/",
+   "quote": "Since 1998, we have assisted over 50 Fortune 100 companies and over 1,000 clients with their most pressing equity compensation valuation and reporting challenges.",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "P112882328",
+   "field": "founded",
+   "reason": "the company's own site states an earlier or the only consistent start: 1985",
+   "source_url": "https://www.lasikplus.com/experience/",
+   "quote": "Laser Centers of America, the predecessor to LasikPlus was founded in 1985 by Dr. Stephen N. Joffe and his wife Sandra and LasikPlus was established in 1995.",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "P208583706",
+   "field": "founded",
+   "reason": "the company's own site states an earlier or the only consistent start: 2006",
+   "source_url": "https://support.mightycause.com/hc/en-us/articles/360015382391-What-is-Mightycause",
+   "quote": "Mightycause was founded in 2006 (formerly known as Razoo)",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "P264487874",
+   "field": "founded",
+   "reason": "the company's own site states an earlier or the only consistent start: 2009",
+   "source_url": "https://reflexion.com/contact/",
+   "quote": "Sam Mazin, Ph.D. and Akshay Nanduri founded RefleXion Medical in 2009.",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0001356115",
+   "field": "founded",
+   "reason": "2006 is the formation of a closed-end credit fund, a REIT only since 2022: not the start of the current business; not graded",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1356115/000119312526133271/nxdt-20251231.htm",
+   "quote": "formed as the Highland Credit Strategies Fund",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0000887396",
+   "field": "founded",
+   "reason": "1983 is the incorporation of a shell, not the start of the oil business; not graded",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/887396/000110465926027675/ep-20251231x10k.htm",
+   "quote": "initially incorporated in 1983",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0002014596",
+   "field": "employees",
+   "reason": "the 10-K's own-employee figure is 9,053",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/2014596/000201459626000029/cghp-20251231.htm",
+   "quote": "As of December 31, 2025, we directly employed 9,053 colleagues",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0001056903",
+   "field": "employees",
+   "reason": "the 10-K's own-employee figure is 900",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1056903/000162828026009114/awr-20251231.htm",
+   "quote": "AWR and its subsidiaries had a total of 900 employees as of December 31, 2025.",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0001057352",
+   "field": "employees",
+   "reason": "the 10-K's own-employee figure is 8,441",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000020/csgp-20251231.htm",
+   "quote": "As of January 31, 2026, we employed: 6,602 U.S.-based employees ... 1,155 ... 608 ... 72 ... 4 (8,441 in total)",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0000812011",
+   "field": "employees",
+   "reason": "the 10-K's own-employee figure is 6,500",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/812011/000081201126000049/mtn-20260731.htm",
+   "quote": "At fiscal year end, we employed approximately 6,500 year-round employees.",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0001057706",
+   "field": "hq",
+   "reason": "Puerto Rico is US territory: San Juan, PR, United States is the same place as the key's San Juan, PR",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1057706/000105770626000007/fbp-20251231.htm",
+   "quote": "San Juan, Puerto Rico",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0001140536",
+   "field": "company",
+   "reason": "the 10-K defines 'WTW' as the company, so a record named WTW is the company",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1140536/000119312526069307/wtw-20251231.htm",
+   "quote": "WTW",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0001057706",
+   "field": "company",
+   "reason": "First BanCorp's own site (1firstbank.com, whose LinkedIn page the key uses) is titled FirstBank",
+   "source_url": "https://www.1firstbank.com/",
+   "quote": "FirstBank / Copyright © 2026 First BanCorp.",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0001356115",
+   "field": "linkedin",
+   "reason": "the key's LinkedIn page (nexpoint) and domain are the external adviser's: the 10-K says the company is externally managed by its Adviser and had no employees, so the REIT has no page of its own; not graded",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1356115/000119312526133271/nxdt-20251231.htm",
+   "quote": "externally managed by our Adviser pursuant to the Advisory Agreement between us and our Adviser.",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "P814638956",
+   "field": "company",
+   "reason": "ServiceNow came from a customer testimonial ('Passage AI was successfully acquired by ServiceNow'), not a parent",
+   "source_url": "https://pilot.com/about",
+   "quote": "Passage AI was successfully acquired by ServiceNow",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0001901440",
+   "field": "company",
+   "reason": "the parent's name was truncated to 'Engagement'",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1901440/000190144026000005/uls-20251231.htm",
+   "quote": "UL Standards & Engagement",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0001467858",
+   "field": "company",
+   "reason": "'Company Name' is an Exhibit 21 table heading or abbreviation, not an entity",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1467858/000146785826000013/gm-20251231.htm",
+   "quote": "Company Name",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0001819994",
+   "field": "company",
+   "reason": "'Company Name' is an Exhibit 21 table heading or abbreviation, not an entity",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000013/rklb-20251231.htm",
+   "quote": "Company Name",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0001676238",
+   "field": "company",
+   "reason": "'Company Name' is an Exhibit 21 table heading or abbreviation, not an entity",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1676238/000167623826000013/brze-20260131.htm",
+   "quote": "Company Name",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0001140536",
+   "field": "company",
+   "reason": "'Company Name' is an Exhibit 21 table heading or abbreviation, not an entity",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1140536/000119312526069307/wtw-20251231.htm",
+   "quote": "Company Name",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0000029989",
+   "field": "company",
+   "reason": "'US' is an Exhibit 21 table heading or abbreviation, not an entity",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/29989/000002998926000006/omc-20251231.htm",
+   "quote": "US",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0001467858",
+   "field": "founded",
+   "reason": "evidence re-attributed to the page the quote is on (no value change)",
+   "source_url": "https://www.gm.com/heritage/durant",
+   "quote": "They agreed, and General Motors was incorporated on September 16, 1908.",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0000914156",
+   "field": "founded",
+   "reason": "evidence re-attributed to the page the quote is on (no value change)",
+   "source_url": "https://ufpt.com/about-us/",
+   "quote": "Founded in 1963 and headquartered in Newburyport, Massachusetts, UFP Technologie",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0001482512",
+   "field": "founded",
+   "reason": "evidence re-attributed to the page the quote is on (no value change)",
+   "source_url": "https://www.hudsonpacificproperties.com/about/strategy",
+   "quote": "That was our Chairman and CEO Victor Coleman’s vision when he founded the compan",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0000093410",
+   "field": "founded",
+   "reason": "evidence re-attributed to the page the quote is on (no value change)",
+   "source_url": "https://www.chevron.com/-/media/chevron/about/documents/chevron-history-brochure.pdf",
+   "quote": "Chevron’s earliest predecessor, Pacific Coast Oil Co., was incorporated in 1879 ",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0000812011",
+   "field": "founded",
+   "reason": "evidence re-attributed to the page the quote is on (no value change)",
+   "source_url": "https://news.vailresorts.com/Honoring-A-Legacy-Of-Service",
+   "quote": "Vail Mountain – our namesake and first resort – was founded in the 1960s by Pete",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0001459200",
+   "field": "founded",
+   "reason": "evidence re-attributed to the page the quote is on (no value change)",
+   "source_url": "https://investors.alarm.com/resources/investor-faqs/default.aspx",
+   "quote": "Alarm.com was founded in 2000 as a business unit within MicroStrategy. In 2009, ",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0001819994",
+   "field": "founded",
+   "reason": "evidence re-attributed to the page the quote is on (no value change)",
+   "source_url": "https://rocketlabcorp.com/updates/rocket-lab-celebrates-rich-ten-year-history/",
+   "quote": "Rocket Lab is this week celebrating its ten-year anniversary. Founded in June 20",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0001057352",
+   "field": "founded",
+   "reason": "evidence re-attributed to the page the quote is on (no value change)",
+   "source_url": "https://www.costargroup.com/about-us",
+   "quote": "Since 1986, our work has kept the customer at the center of all we do.",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0001035002",
+   "field": "founded",
+   "reason": "evidence re-attributed to the page the quote is on (no value change)",
+   "source_url": "https://www.valero.com/about/our-history",
+   "quote": "Founded in 1980 and named for the mission San Antonio de Valero – the original n",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0000764478",
+   "field": "founded",
+   "reason": "evidence re-attributed to the page the quote is on (no value change)",
+   "source_url": "https://corporate.bestbuy.com/wp-content/uploads/downloads/BBY_TimeLine.pdf",
+   "quote": "1966 Richard Schulze and business partner open the",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0001287865",
+   "field": "founded",
+   "reason": "evidence re-attributed to the page the quote is on (no value change)",
+   "source_url": "https://www.mpt.com/timeline",
+   "quote": "MPT is founded by Ed Aldag. Co-founders Emmett McLean and Steve Hamner join the ",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0000052827",
+   "field": "hq_metro",
+   "reason": "Wildlight, FL is in CBSA 27260 (Jacksonville); the geocoder's first hit was a street in Sumter County",
+   "source_url": "https://geocoding.geo.census.gov/",
+   "quote": "1 RAYONIER WAY, WILDLIGHT, FL 32097",
+   "decided_at": "2026-10-02"
+  },
+  {
+   "company_id": "0001593275",
+   "field": "hq",
+   "reason": "Pembroke, Bermuda is in Pembroke Parish; a record naming the parish with the filing's street address is the same place, so 'Pembroke Parish' is accepted as the same headquarters",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1593275/000159327526000021/hg-20251231.htm",
+   "quote": "Wellesley House North, 1st Floor , 90 Pitts Bay Road Pembroke HM 08 Bermuda (Address of Principal Executive Offices and Zip Code)",
+   "decided_at": "2026-10-05"
+  },
+  {
+   "company_id": "P611707635",
+   "field": "founded",
+   "reason": "the company's own site gives 1987 for the start of the business, earlier than the labor filing's 1995: 1987",
+   "source_url": "https://www.wilsonconnectivity.com/about-us",
+   "quote": "Inventing technology that would reshape cell signal performance for the next 30+ years wasn’t what our founder had in mind way back in 1987.",
+   "decided_at": "2026-10-05"
+  },
+  {
+   "company_id": "0000002186",
+   "field": "linkedin",
+   "reason": "the LinkedIn address on the company's own site redirects to linkedin.com/company/bktechnologiesinc (page 16208127): the same page under another address",
+   "source_url": "https://www.bktechnologies.com/",
+   "quote": "linkedin.com/company/bktechnologies (linked from bktechnologies.com) answers HTTP 301 with Location https://www.linkedin.com/company/bktechnologiesinc",
+   "decided_at": "2026-10-05"
+  }
+ ],
+ "held_out_by_field": {
+  "employees": 7,
+  "company": 6,
+  "founded": 11,
+  "hq": 1
+ }
+}

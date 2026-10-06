@@ -1,0 +1,50 @@
+{
+  "_about": "Every response path records.py reads, per provider. preflight.py checks the 'required' paths on the probe companies before a run: if a provider renames or drops one, the run stops instead of quietly scoring 0. 'optional' paths are fallbacks that many companies lack. Path syntax: a.b.c, [0] = first list item, [] = any list item.",
+  "probe_domains": ["nordson.com", "franklintempleton.com", "ameren.com"],
+  "providers": {
+    "apollo": {
+      "required": ["organization.name", "organization.primary_domain", "organization.linkedin_url", "organization.city",
+                   "organization.state", "organization.country", "organization.estimated_num_employees",
+                   "organization.industry", "organization.founded_year", "organization.publicly_traded_symbol",
+                   "organization.annual_revenue"],
+      "optional": ["organization.website_url", "organization.linkedin_uid", "organization.raw_address"]
+    },
+    "fullenrich": {
+      "required": ["companies[0].name", "companies[0].domain", "companies[0].headcount", "companies[0].headcount_range",
+                   "companies[0].industry.main_industry", "companies[0].year_founded",
+                   "companies[0].social_profiles.professional_network.url", "companies[0].locations.headquarters.city",
+                   "companies[0].locations.headquarters.region"],
+      "optional": ["companies[0].social_profiles.professional_network.id", "companies[0].locations.headquarters.country_code",
+                   "companies[0].locations.headquarters.country", "companies[0].locations.headquarters.line2"]
+    },
+    "datalegion": {
+      "required": ["matches[0].company.name", "matches[0].company.domain", "matches[0].company.linkedin_url",
+                   "matches[0].company.size", "matches[0].company.legion_employee_count", "matches[0].company.industry",
+                   "matches[0].company.founded"],
+      "optional": ["matches[0].company.name.display", "matches[0].company.name.cleaned", "matches[0].company.linkedin_id", "matches[0].company.linkedin_slug", "matches[0].company.tickers[].symbol",
+                   "matches[0].company.socials[].url", "matches[0].company.socials[].id", "matches[0].company.socials[].network"]
+    },
+    "pdl": {
+      "required": ["name", "website", "linkedin_url", "location.locality", "location.region", "location.country", "industry",
+                   "founded", "employee_count", "size"],
+      "optional": ["data", "display_name", "linkedin_id", "linkedin_slug", "industry_v2", "ticker", "inferred_revenue"]
+    },
+    "ocean": {
+      "required": ["name", "domain", "medias.linkedin.url", "locations[].locality", "locations[].region",
+                   "linkedinIndustry", "yearFounded", "employeeCountOcean", "companySize"],
+      "optional": ["rootUrl", "locations[].primary", "locations[].country", "primaryCountry", "industries", "revenue",
+                   "employeeCountLinkedin"]
+    },
+    "contactout": {
+      "required": ["name", "domain", "li_vanity", "headquarter", "employees", "size", "industry", "founded_at"],
+      "optional": ["website", "country", "revenue"]
+    },
+    "external": {
+      "_about": "your own endpoint (README 'Run your own provider'); no preflight, every field may be null",
+      "required": [],
+      "optional": ["company_name", "name", "website", "domain", "hq_city", "hq_state", "hq_country", "employee_count",
+                   "employee_range", "industry", "founded_year", "linkedin_url", "linkedin_id", "stock_ticker",
+                   "annual_revenue_usd"]
+    }
+  }
+}

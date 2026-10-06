@@ -1,0 +1,89 @@
+name: company-enrichment-eval
+
+# Two jobs, deliberately split by what they cost.
+#
+#   checks  runs on every push and PR. No credentials, no network, no provider calls: answer-key schema, field
+#           extraction, scoring rules, aggregation, and that README and results.json agree. This is the gate: it
+#           catches a changed rule or a corrupted answer key before any number is published.
+#
+#   run     manual only. One provider over the public sample (or --limit N of it) against that provider's paid API,
+#           then the report. Dispatch it deliberately. Only the scores are uploaded: the raw answers are the provider's
+#           data, and an artifact of a public repository can be downloaded by anyone.
+
+on:
+  push:
+    branches: [main]
+    paths: &checked_paths
+      - 'company_enrichment/**'
+      - 'benchmark/**'
+      - 'README.md'
+      - 'pyproject.toml'
+      - 'uv.lock'
+      - '.github/workflows/company-enrichment-eval.yml'
+  pull_request:
+    paths: *checked_paths
+  workflow_dispatch:
+    inputs:
+      provider:
+        description: 'apollo | fullenrich | datalegion | pdl | ocean | contactout'
+        required: true
+        default: 'apollo'
+      limit:
+        description: 'first N companies only, for a smoke run (blank = the whole public sample)'
+        required: false
+        default: '10'
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: '3.11'
+      - name: Install
+        run: uv sync --extra dev
+      - name: Answer key, extraction and scorer tests
+        # the DIRECTORY, not a hand-listed set: a new test file must not need a CI edit to run
+        run: uv run pytest company_enrichment/tests -q
+
+      # A wrapper with keys baked in is the most likely way a credential reaches a PR, so fail here rather than
+      # trusting .gitignore to have caught it. Word-anchored so ordinary text that contains the prefix does not trip it.
+      - name: Reject committed credentials
+        run: |
+          if git grep -nIE '\b(fc-[a-f0-9]{32}|sk-ant-[A-Za-z0-9_-]{20,}|sk-[A-Za-z0-9]{20,}|vck_[A-Za-z0-9]{20,})' -- . ':!*.lock'; then
+            echo "::error::credential-shaped string committed"
+            exit 1
+          fi
+
+  run:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    # Requires a "vendor-eval" environment under repo Settings -> Environments with required reviewers. This job holds
+    # every provider's live API key, so a second human approval before secrets are exposed is worth the extra click.
+    environment: vendor-eval
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: '3.11'
+      - name: Install
+        run: uv sync
+      - name: Run provider
+        env:
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+          PDL_API_KEY: ${{ secrets.PDL_API_KEY }}
+          OCEAN_API_KEY: ${{ secrets.OCEAN_API_KEY }}
+          CONTACTOUT_API_KEY: ${{ secrets.CONTACTOUT_API_KEY }}
+        run: |
+          uv run company-enrichment --provider "${{ inputs.provider }}" \
+            ${{ inputs.limit && format('--limit {0}', inputs.limit) || '' }} \
+            --label "ci-${{ inputs.provider }}"
+      - name: Report
+        run: uv run company-enrichment-report --label "ci-${{ inputs.provider }}" --out results-ci.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: company-enrichment-${{ inputs.provider }}
+          path: results-ci.json     # scores only; never company_enrichment/runs/ (raw provider answers)
+          retention-days: 14

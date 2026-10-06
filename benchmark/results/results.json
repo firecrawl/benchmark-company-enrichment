@@ -1,0 +1,1222 @@
+{
+  "benchmark": "Company Enrichment",
+  "version": "1.0.0",
+  "snapshot": {
+    "label": "October 2026 run",
+    "date": "2026-10-02"
+  },
+  "dataset": {
+    "gt": "companies_full_v2",
+    "companies": 200,
+    "groups": {
+      "us_public": 150,
+      "us_private": 50
+    },
+    "public_sample": 102
+  },
+  "fields": {
+    "common": [
+      "hq",
+      "employees",
+      "founded",
+      "linkedin"
+    ],
+    "all": [
+      "hq",
+      "employees",
+      "founded",
+      "linkedin",
+      "industry",
+      "ticker",
+      "revenue"
+    ]
+  },
+  "note": "Scores are on the FULL answer key (200 companies). company_enrichment/gt/ ships a 102-company public sample: half of every group and size band.",
+  "scorer": "company_enrichment.scorer.report_metrics",
+  "systems": {
+    "Apollo.io": {
+      "provider": "apollo",
+      "tag": "alexandria",
+      "via": "Firecrawl Alexandria",
+      "run": "20261002T133856Z-apollo",
+      "common": {
+        "score": 0.892886,
+        "ci95": [
+          0.859923,
+          0.921733
+        ],
+        "rank_ci95": [
+          1.0,
+          1.0
+        ],
+        "groups": {
+          "us_public": 0.940945,
+          "us_private": 0.844828
+        }
+      },
+      "all_fields": {
+        "score": 0.815549,
+        "ci95": [
+          0.783253,
+          0.845169
+        ],
+        "rank_ci95": [
+          1.0,
+          1.0
+        ],
+        "groups": {
+          "us_public": 0.857555,
+          "us_private": 0.773543
+        }
+      },
+      "fields": {
+        "hq": {
+          "score": 0.91,
+          "ci95": [
+            0.856667,
+            0.956667
+          ],
+          "offered": true,
+          "graded": 200,
+          "coverage": 0.995,
+          "accuracy_when_answered": 0.929648
+        },
+        "employees": {
+          "score": 0.772135,
+          "ci95": [
+            0.705333,
+            0.835037
+          ],
+          "offered": true,
+          "graded": 187,
+          "coverage": 0.994652,
+          "accuracy_when_answered": 0.88172
+        },
+        "founded": {
+          "score": 0.886961,
+          "ci95": [
+            0.831796,
+            0.9375
+          ],
+          "offered": true,
+          "graded": 139,
+          "coverage": 0.971223,
+          "accuracy_when_answered": 0.903704
+        },
+        "linkedin": {
+          "score": 0.991803,
+          "ci95": [
+            0.979167,
+            1.0
+          ],
+          "offered": true,
+          "graded": 156,
+          "coverage": 1.0,
+          "accuracy_when_answered": 0.987179
+        },
+        "industry": {
+          "score": 0.534371,
+          "ci95": [
+            0.462092,
+            0.604355
+          ],
+          "offered": true,
+          "graded": 199,
+          "coverage": 0.974874,
+          "accuracy_when_answered": 0.555412
+        },
+        "ticker": {
+          "score": 0.913333,
+          "ci95": [
+            0.866667,
+            0.953333
+          ],
+          "offered": true,
+          "graded": 150,
+          "coverage": 0.96,
+          "accuracy_when_answered": 0.951389
+        },
+        "revenue": {
+          "score": 0.827586,
+          "ci95": [
+            0.765517,
+            0.887324
+          ],
+          "offered": true,
+          "graded": 145,
+          "coverage": 0.993103,
+          "accuracy_when_answered": 0.833333
+        }
+      },
+      "coverage": 0.991202,
+      "accuracy_when_answered": 0.924556,
+      "wrong_company_records": 3,
+      "public_sample": {
+        "common": {
+          "score": 0.888959,
+          "ci95": [
+            0.836666,
+            0.9339
+          ]
+        },
+        "all_fields": {
+          "score": 0.80737,
+          "ci95": [
+            0.760051,
+            0.851057
+          ]
+        }
+      }
+    },
+    "FullEnrich": {
+      "provider": "fullenrich",
+      "tag": "alexandria",
+      "via": "Firecrawl Alexandria",
+      "run": "20261002T133858Z-fullenrich",
+      "common": {
+        "score": 0.727187,
+        "ci95": [
+          0.67771,
+          0.772719
+        ],
+        "rank_ci95": [
+          4.0,
+          5.0
+        ],
+        "groups": {
+          "us_public": 0.727362,
+          "us_private": 0.727011
+        }
+      },
+      "all_fields": {
+        "score": 0.595591,
+        "ci95": [
+          0.551356,
+          0.636363
+        ],
+        "rank_ci95": [
+          4.0,
+          5.0
+        ],
+        "groups": {
+          "us_public": 0.487146,
+          "us_private": 0.704036
+        }
+      },
+      "fields": {
+        "hq": {
+          "score": 0.756667,
+          "ci95": [
+            0.683333,
+            0.826667
+          ],
+          "offered": true,
+          "graded": 200,
+          "coverage": 0.87,
+          "accuracy_when_answered": 0.902299
+        },
+        "employees": {
+          "score": 0.540887,
+          "ci95": [
+            0.467887,
+            0.615944
+          ],
+          "offered": true,
+          "graded": 187,
+          "coverage": 0.973262,
+          "accuracy_when_answered": 0.593407
+        },
+        "founded": {
+          "score": 0.675737,
+          "ci95": [
+            0.593748,
+            0.751137
+          ],
+          "offered": true,
+          "graded": 139,
+          "coverage": 0.719424,
+          "accuracy_when_answered": 0.89
+        },
+        "linkedin": {
+          "score": 0.932015,
+          "ci95": [
+            0.888768,
+            0.96748
+          ],
+          "offered": true,
+          "graded": 156,
+          "coverage": 0.987179,
+          "accuracy_when_answered": 0.922078
+        },
+        "industry": {
+          "score": 0.627058,
+          "ci95": [
+            0.555822,
+            0.696667
+          ],
+          "offered": true,
+          "graded": 199,
+          "coverage": 0.949749,
+          "accuracy_when_answered": 0.662698
+        },
+        "ticker": {
+          "score": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "offered": false,
+          "graded": 150,
+          "coverage": 0.0,
+          "accuracy_when_answered": null
+        },
+        "revenue": {
+          "score": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "offered": false,
+          "graded": 145,
+          "coverage": 0.0,
+          "accuracy_when_answered": null
+        }
+      },
+      "coverage": 0.894428,
+      "accuracy_when_answered": 0.813115,
+      "wrong_company_records": 3,
+      "public_sample": {
+        "common": {
+          "score": 0.690039,
+          "ci95": [
+            0.616241,
+            0.758246
+          ]
+        },
+        "all_fields": {
+          "score": 0.551968,
+          "ci95": [
+            0.488861,
+            0.610548
+          ]
+        }
+      }
+    },
+    "Data Legion": {
+      "provider": "datalegion",
+      "tag": "alexandria",
+      "via": "Firecrawl Alexandria (Premium record)",
+      "run": "20261002T133902Z-datalegion",
+      "common": {
+        "score": 0.522021,
+        "ci95": [
+          0.491825,
+          0.550236
+        ],
+        "rank_ci95": [
+          6.0,
+          6.0
+        ],
+        "groups": {
+          "us_public": 0.463583,
+          "us_private": 0.58046
+        }
+      },
+      "all_fields": {
+        "score": 0.541159,
+        "ci95": [
+          0.510966,
+          0.569541
+        ],
+        "rank_ci95": [
+          6.0,
+          6.0
+        ],
+        "groups": {
+          "us_public": 0.484785,
+          "us_private": 0.597534
+        }
+      },
+      "fields": {
+        "hq": {
+          "score": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "offered": false,
+          "graded": 200,
+          "coverage": 0.0,
+          "accuracy_when_answered": null
+        },
+        "employees": {
+          "score": 0.460282,
+          "ci95": [
+            0.391149,
+            0.528103
+          ],
+          "offered": true,
+          "graded": 187,
+          "coverage": 0.994652,
+          "accuracy_when_answered": 0.405914
+        },
+        "founded": {
+          "score": 0.843424,
+          "ci95": [
+            0.779146,
+            0.901035
+          ],
+          "offered": true,
+          "graded": 139,
+          "coverage": 0.920863,
+          "accuracy_when_answered": 0.898438
+        },
+        "linkedin": {
+          "score": 0.959016,
+          "ci95": [
+            0.933628,
+            0.983193
+          ],
+          "offered": true,
+          "graded": 156,
+          "coverage": 1.0,
+          "accuracy_when_answered": 0.935897
+        },
+        "industry": {
+          "score": 0.637415,
+          "ci95": [
+            0.566667,
+            0.705
+          ],
+          "offered": true,
+          "graded": 199,
+          "coverage": 0.979899,
+          "accuracy_when_answered": 0.639744
+        },
+        "ticker": {
+          "score": 0.893333,
+          "ci95": [
+            0.846667,
+            0.94
+          ],
+          "offered": true,
+          "graded": 150,
+          "coverage": 0.926667,
+          "accuracy_when_answered": 0.964029
+        },
+        "revenue": {
+          "score": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "offered": false,
+          "graded": 145,
+          "coverage": 0.0,
+          "accuracy_when_answered": null
+        }
+      },
+      "coverage": 0.68915,
+      "accuracy_when_answered": 0.715957,
+      "wrong_company_records": 0,
+      "public_sample": {
+        "common": {
+          "score": 0.501469,
+          "ci95": [
+            0.45563,
+            0.541758
+          ]
+        },
+        "all_fields": {
+          "score": 0.510356,
+          "ci95": [
+            0.470662,
+            0.548277
+          ]
+        }
+      }
+    },
+    "People Data Labs": {
+      "provider": "pdl",
+      "tag": "soon",
+      "via": "People Data Labs API",
+      "run": "20261002T133905Z-pdl",
+      "common": {
+        "score": 0.806493,
+        "ci95": [
+          0.765298,
+          0.842605
+        ],
+        "rank_ci95": [
+          2.0,
+          3.0
+        ],
+        "groups": {
+          "us_public": 0.819882,
+          "us_private": 0.793103
+        }
+      },
+      "all_fields": {
+        "score": 0.719773,
+        "ci95": [
+          0.680117,
+          0.755449
+        ],
+        "rank_ci95": [
+          2.0,
+          2.0
+        ],
+        "groups": {
+          "us_public": 0.687303,
+          "us_private": 0.752242
+        }
+      },
+      "fields": {
+        "hq": {
+          "score": 0.886667,
+          "ci95": [
+            0.826667,
+            0.936667
+          ],
+          "offered": true,
+          "graded": 200,
+          "coverage": 0.985,
+          "accuracy_when_answered": 0.923858
+        },
+        "employees": {
+          "score": 0.517666,
+          "ci95": [
+            0.446726,
+            0.590865
+          ],
+          "offered": true,
+          "graded": 187,
+          "coverage": 0.994652,
+          "accuracy_when_answered": 0.551075
+        },
+        "founded": {
+          "score": 0.849887,
+          "ci95": [
+            0.785417,
+            0.908336
+          ],
+          "offered": true,
+          "graded": 139,
+          "coverage": 0.935252,
+          "accuracy_when_answered": 0.9
+        },
+        "linkedin": {
+          "score": 0.987705,
+          "ci95": [
+            0.971774,
+            1.0
+          ],
+          "offered": true,
+          "graded": 156,
+          "coverage": 1.0,
+          "accuracy_when_answered": 0.980769
+        },
+        "industry": {
+          "score": 0.625238,
+          "ci95": [
+            0.55166,
+            0.69631
+          ],
+          "offered": true,
+          "graded": 199,
+          "coverage": 0.984925,
+          "accuracy_when_answered": 0.644133
+        },
+        "ticker": {
+          "score": 0.9,
+          "ci95": [
+            0.853333,
+            0.946667
+          ],
+          "offered": true,
+          "graded": 150,
+          "coverage": 0.926667,
+          "accuracy_when_answered": 0.971223
+        },
+        "revenue": {
+          "score": 0.048276,
+          "ci95": [
+            0.013986,
+            0.085106
+          ],
+          "offered": true,
+          "graded": 145,
+          "coverage": 0.993103,
+          "accuracy_when_answered": 0.048611
+        }
+      },
+      "coverage": 0.980938,
+      "accuracy_when_answered": 0.828849,
+      "wrong_company_records": 2,
+      "public_sample": {
+        "common": {
+          "score": 0.78817,
+          "ci95": [
+            0.722904,
+            0.84518
+          ]
+        },
+        "all_fields": {
+          "score": 0.692495,
+          "ci95": [
+            0.635154,
+            0.746018
+          ]
+        }
+      }
+    },
+    "Ocean.io": {
+      "provider": "ocean",
+      "tag": null,
+      "via": "Ocean.io API",
+      "run": "20261002T133907Z-ocean",
+      "common": {
+        "score": 0.787006,
+        "ci95": [
+          0.744111,
+          0.826762
+        ],
+        "rank_ci95": [
+          2.0,
+          3.0
+        ],
+        "groups": {
+          "us_public": 0.795276,
+          "us_private": 0.778736
+        }
+      },
+      "all_fields": {
+        "score": 0.648718,
+        "ci95": [
+          0.61336,
+          0.682299
+        ],
+        "rank_ci95": [
+          3.0,
+          3.0
+        ],
+        "groups": {
+          "us_public": 0.531742,
+          "us_private": 0.765695
+        }
+      },
+      "fields": {
+        "hq": {
+          "score": 0.85,
+          "ci95": [
+            0.783333,
+            0.906667
+          ],
+          "offered": true,
+          "graded": 200,
+          "coverage": 0.985,
+          "accuracy_when_answered": 0.888325
+        },
+        "employees": {
+          "score": 0.565486,
+          "ci95": [
+            0.487821,
+            0.642266
+          ],
+          "offered": true,
+          "graded": 187,
+          "coverage": 1.0,
+          "accuracy_when_answered": 0.574866
+        },
+        "founded": {
+          "score": 0.808163,
+          "ci95": [
+            0.736471,
+            0.87382
+          ],
+          "offered": true,
+          "graded": 139,
+          "coverage": 0.920863,
+          "accuracy_when_answered": 0.875
+        },
+        "linkedin": {
+          "score": 0.944311,
+          "ci95": [
+            0.90163,
+            0.97619
+          ],
+          "offered": true,
+          "graded": 156,
+          "coverage": 0.974359,
+          "accuracy_when_answered": 0.953947
+        },
+        "industry": {
+          "score": 0.692194,
+          "ci95": [
+            0.628326,
+            0.75228
+          ],
+          "offered": true,
+          "graded": 199,
+          "coverage": 0.994975,
+          "accuracy_when_answered": 0.681818
+        },
+        "ticker": {
+          "score": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "offered": false,
+          "graded": 150,
+          "coverage": 0.0,
+          "accuracy_when_answered": null
+        },
+        "revenue": {
+          "score": 0.02069,
+          "ci95": [
+            0.0,
+            0.047945
+          ],
+          "offered": true,
+          "graded": 145,
+          "coverage": 0.986207,
+          "accuracy_when_answered": 0.020979
+        }
+      },
+      "coverage": 0.973607,
+      "accuracy_when_answered": 0.8125,
+      "wrong_company_records": 2,
+      "public_sample": {
+        "common": {
+          "score": 0.755045,
+          "ci95": [
+            0.687065,
+            0.816734
+          ]
+        },
+        "all_fields": {
+          "score": 0.615199,
+          "ci95": [
+            0.561034,
+            0.666535
+          ]
+        }
+      }
+    },
+    "ContactOut": {
+      "provider": "contactout",
+      "tag": null,
+      "via": "ContactOut API",
+      "run": "20261002T133909Z-contactout",
+      "common": {
+        "score": 0.726695,
+        "ci95": [
+          0.683887,
+          0.768169
+        ],
+        "rank_ci95": [
+          4.0,
+          5.0
+        ],
+        "groups": {
+          "us_public": 0.726378,
+          "us_private": 0.727011
+        }
+      },
+      "all_fields": {
+        "score": 0.60587,
+        "ci95": [
+          0.566406,
+          0.643579
+        ],
+        "rank_ci95": [
+          4.0,
+          5.0
+        ],
+        "groups": {
+          "us_public": 0.502099,
+          "us_private": 0.709641
+        }
+      },
+      "fields": {
+        "hq": {
+          "score": 0.646667,
+          "ci95": [
+            0.57,
+            0.723333
+          ],
+          "offered": true,
+          "graded": 200,
+          "coverage": 0.7,
+          "accuracy_when_answered": 0.957143
+        },
+        "employees": {
+          "score": 0.546024,
+          "ci95": [
+            0.473775,
+            0.61962
+          ],
+          "offered": true,
+          "graded": 187,
+          "coverage": 0.994652,
+          "accuracy_when_answered": 0.58871
+        },
+        "founded": {
+          "score": 0.788776,
+          "ci95": [
+            0.717355,
+            0.853343
+          ],
+          "offered": true,
+          "graded": 139,
+          "coverage": 0.856115,
+          "accuracy_when_answered": 0.890756
+        },
+        "linkedin": {
+          "score": 0.959016,
+          "ci95": [
+            0.93254,
+            0.98246
+          ],
+          "offered": true,
+          "graded": 156,
+          "coverage": 0.99359,
+          "accuracy_when_answered": 0.941935
+        },
+        "industry": {
+          "score": 0.652313,
+          "ci95": [
+            0.581875,
+            0.719577
+          ],
+          "offered": true,
+          "graded": 199,
+          "coverage": 0.969849,
+          "accuracy_when_answered": 0.67487
+        },
+        "ticker": {
+          "score": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "offered": false,
+          "graded": 150,
+          "coverage": 0.0,
+          "accuracy_when_answered": null
+        },
+        "revenue": {
+          "score": 0.075862,
+          "ci95": [
+            0.034722,
+            0.122449
+          ],
+          "offered": true,
+          "graded": 145,
+          "coverage": 0.951724,
+          "accuracy_when_answered": 0.07971
+        }
+      },
+      "coverage": 0.879765,
+      "accuracy_when_answered": 0.825833,
+      "wrong_company_records": 2,
+      "public_sample": {
+        "common": {
+          "score": 0.692772,
+          "ci95": [
+            0.632221,
+            0.749925
+          ]
+        },
+        "all_fields": {
+          "score": 0.568524,
+          "ci95": [
+            0.515513,
+            0.619916
+          ]
+        }
+      }
+    }
+  },
+  "pairwise": {
+    "common": [
+      {
+        "a": "Apollo.io",
+        "b": "FullEnrich",
+        "diff": 0.165699,
+        "ci95": [
+          0.126317,
+          0.209415
+        ],
+        "p": 0.0,
+        "p_holm": 0.0,
+        "significant": true
+      },
+      {
+        "a": "Apollo.io",
+        "b": "Data Legion",
+        "diff": 0.370865,
+        "ci95": [
+          0.342283,
+          0.40077
+        ],
+        "p": 0.0,
+        "p_holm": 0.0,
+        "significant": true
+      },
+      {
+        "a": "Apollo.io",
+        "b": "People Data Labs",
+        "diff": 0.086394,
+        "ci95": [
+          0.060459,
+          0.114169
+        ],
+        "p": 0.0,
+        "p_holm": 0.0,
+        "significant": true
+      },
+      {
+        "a": "Apollo.io",
+        "b": "Ocean.io",
+        "diff": 0.105881,
+        "ci95": [
+          0.069801,
+          0.143684
+        ],
+        "p": 0.0,
+        "p_holm": 0.0,
+        "significant": true
+      },
+      {
+        "a": "Apollo.io",
+        "b": "ContactOut",
+        "diff": 0.166192,
+        "ci95": [
+          0.134685,
+          0.199366
+        ],
+        "p": 0.0,
+        "p_holm": 0.0,
+        "significant": true
+      },
+      {
+        "a": "FullEnrich",
+        "b": "Data Legion",
+        "diff": 0.205166,
+        "ci95": [
+          0.163884,
+          0.244031
+        ],
+        "p": 0.0,
+        "p_holm": 0.0,
+        "significant": true
+      },
+      {
+        "a": "FullEnrich",
+        "b": "People Data Labs",
+        "diff": -0.079306,
+        "ci95": [
+          -0.124119,
+          -0.038241
+        ],
+        "p": 0.0,
+        "p_holm": 0.0,
+        "significant": true
+      },
+      {
+        "a": "FullEnrich",
+        "b": "Ocean.io",
+        "diff": -0.059819,
+        "ci95": [
+          -0.108325,
+          -0.012442
+        ],
+        "p": 0.014,
+        "p_holm": 0.042,
+        "significant": true
+      },
+      {
+        "a": "FullEnrich",
+        "b": "ContactOut",
+        "diff": 0.000492,
+        "ci95": [
+          -0.037813,
+          0.035167
+        ],
+        "p": 0.9484,
+        "p_holm": 0.9484,
+        "significant": false
+      },
+      {
+        "a": "Data Legion",
+        "b": "People Data Labs",
+        "diff": -0.284471,
+        "ci95": [
+          -0.311001,
+          -0.255833
+        ],
+        "p": 0.0,
+        "p_holm": 0.0,
+        "significant": true
+      },
+      {
+        "a": "Data Legion",
+        "b": "Ocean.io",
+        "diff": -0.264984,
+        "ci95": [
+          -0.302705,
+          -0.22695
+        ],
+        "p": 0.0,
+        "p_holm": 0.0,
+        "significant": true
+      },
+      {
+        "a": "Data Legion",
+        "b": "ContactOut",
+        "diff": -0.204673,
+        "ci95": [
+          -0.241423,
+          -0.1684
+        ],
+        "p": 0.0,
+        "p_holm": 0.0,
+        "significant": true
+      },
+      {
+        "a": "People Data Labs",
+        "b": "Ocean.io",
+        "diff": 0.019487,
+        "ci95": [
+          -0.020887,
+          0.059236
+        ],
+        "p": 0.3324,
+        "p_holm": 0.6648,
+        "significant": false
+      },
+      {
+        "a": "People Data Labs",
+        "b": "ContactOut",
+        "diff": 0.079798,
+        "ci95": [
+          0.043431,
+          0.117399
+        ],
+        "p": 0.0,
+        "p_holm": 0.0,
+        "significant": true
+      },
+      {
+        "a": "Ocean.io",
+        "b": "ContactOut",
+        "diff": 0.060311,
+        "ci95": [
+          0.018773,
+          0.102075
+        ],
+        "p": 0.0048,
+        "p_holm": 0.0192,
+        "significant": true
+      }
+    ],
+    "all_fields": [
+      {
+        "a": "Apollo.io",
+        "b": "FullEnrich",
+        "diff": 0.219958,
+        "ci95": [
+          0.185817,
+          0.257976
+        ],
+        "p": 0.0,
+        "p_holm": 0.0,
+        "significant": true
+      },
+      {
+        "a": "Apollo.io",
+        "b": "Data Legion",
+        "diff": 0.27439,
+        "ci95": [
+          0.249167,
+          0.299136
+        ],
+        "p": 0.0,
+        "p_holm": 0.0,
+        "significant": true
+      },
+      {
+        "a": "Apollo.io",
+        "b": "People Data Labs",
+        "diff": 0.095776,
+        "ci95": [
+          0.071462,
+          0.120807
+        ],
+        "p": 0.0,
+        "p_holm": 0.0,
+        "significant": true
+      },
+      {
+        "a": "Apollo.io",
+        "b": "Ocean.io",
+        "diff": 0.16683,
+        "ci95": [
+          0.136699,
+          0.197945
+        ],
+        "p": 0.0,
+        "p_holm": 0.0,
+        "significant": true
+      },
+      {
+        "a": "Apollo.io",
+        "b": "ContactOut",
+        "diff": 0.209679,
+        "ci95": [
+          0.18346,
+          0.237437
+        ],
+        "p": 0.0,
+        "p_holm": 0.0,
+        "significant": true
+      },
+      {
+        "a": "FullEnrich",
+        "b": "Data Legion",
+        "diff": 0.054432,
+        "ci95": [
+          0.021444,
+          0.084596
+        ],
+        "p": 0.0036,
+        "p_holm": 0.0144,
+        "significant": true
+      },
+      {
+        "a": "FullEnrich",
+        "b": "People Data Labs",
+        "diff": -0.124182,
+        "ci95": [
+          -0.161081,
+          -0.089696
+        ],
+        "p": 0.0,
+        "p_holm": 0.0,
+        "significant": true
+      },
+      {
+        "a": "FullEnrich",
+        "b": "Ocean.io",
+        "diff": -0.053128,
+        "ci95": [
+          -0.090918,
+          -0.015684
+        ],
+        "p": 0.0036,
+        "p_holm": 0.0144,
+        "significant": true
+      },
+      {
+        "a": "FullEnrich",
+        "b": "ContactOut",
+        "diff": -0.010279,
+        "ci95": [
+          -0.041813,
+          0.017575
+        ],
+        "p": 0.5232,
+        "p_holm": 0.5232,
+        "significant": false
+      },
+      {
+        "a": "Data Legion",
+        "b": "People Data Labs",
+        "diff": -0.178613,
+        "ci95": [
+          -0.200942,
+          -0.154361
+        ],
+        "p": 0.0,
+        "p_holm": 0.0,
+        "significant": true
+      },
+      {
+        "a": "Data Legion",
+        "b": "Ocean.io",
+        "diff": -0.107559,
+        "ci95": [
+          -0.134213,
+          -0.080522
+        ],
+        "p": 0.0,
+        "p_holm": 0.0,
+        "significant": true
+      },
+      {
+        "a": "Data Legion",
+        "b": "ContactOut",
+        "diff": -0.064711,
+        "ci95": [
+          -0.091211,
+          -0.038066
+        ],
+        "p": 0.0,
+        "p_holm": 0.0,
+        "significant": true
+      },
+      {
+        "a": "People Data Labs",
+        "b": "Ocean.io",
+        "diff": 0.071054,
+        "ci95": [
+          0.039802,
+          0.101506
+        ],
+        "p": 0.0,
+        "p_holm": 0.0,
+        "significant": true
+      },
+      {
+        "a": "People Data Labs",
+        "b": "ContactOut",
+        "diff": 0.113903,
+        "ci95": [
+          0.085803,
+          0.141867
+        ],
+        "p": 0.0,
+        "p_holm": 0.0,
+        "significant": true
+      },
+      {
+        "a": "Ocean.io",
+        "b": "ContactOut",
+        "diff": 0.042849,
+        "ci95": [
+          0.01332,
+          0.072687
+        ],
+        "p": 0.0036,
+        "p_holm": 0.0144,
+        "significant": true
+      }
+    ]
+  },
+  "companies_scored": {
+    "us_public": 150,
+    "us_private": 50
+  },
+  "excluded": {},
+  "ci": {
+    "method": "percentile bootstrap",
+    "resamples": 5000,
+    "seed": 2026,
+    "level": 0.95,
+    "clusters": "companies, resampled within each group (US public, US private) at fixed size",
+    "pairwise": "paired differences on the same resamples, Holm-corrected over every pair of systems shown"
+  },
+  "aggregation": "per group: points / graded slots; score = equal-weight mean of the two groups"
+}

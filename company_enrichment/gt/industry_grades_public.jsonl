@@ -1,0 +1,110 @@
+{"company_id": "0000002186", "label": "telecommunications", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0000050471", "label": "information technology & services", "votes": {"astra": 0.0, "gemini": 0.5, "opus": 0.5, "sol": 0.0, "sonnet": 0.5}}
+{"company_id": "0000050471", "label": "it services and it consulting", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0000052827", "label": "paper & forest products", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0000277948", "label": "transportation/trucking/railroad", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0000318154", "label": "biotechnology", "votes": {"astra": 0.0, "gemini": 1.0, "opus": 0.5, "sol": 0.5, "sonnet": 0.5}}
+{"company_id": "0000318154", "label": "biotechnology research", "votes": {"astra": 0.0, "gemini": 0.5, "opus": 0.5, "sol": 0.5, "sonnet": 0.0}}
+{"company_id": "0000318154", "label": "research", "votes": {"astra": 0.5, "gemini": 0.5, "opus": 0.0, "sol": 0.5, "sonnet": 0.0}}
+{"company_id": "0000714256", "label": "hospital & health care", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0000714256", "label": "hospitals and health care", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0000731012", "label": "hospitality", "votes": {"astra": 0.5, "gemini": 0.0, "opus": 0.5, "sol": 0.5, "sonnet": 0.0}}
+{"company_id": "0000731012", "label": "hospitals and health care", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0000780571", "label": "utilities", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0000812011", "label": "civic & social organization", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0000812011", "label": "hospitality", "votes": {"astra": 0.5, "gemini": 0.5, "opus": 0.5, "sol": 0.5, "sonnet": 0.5}}
+{"company_id": "0000884624", "label": "hospitals and health care", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0000912093", "label": "telecommunications", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0000936395", "label": "telecommunications", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0000946581", "label": "entertainment", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.5, "sonnet": 0.0}}
+{"company_id": "0000946581", "label": "entertainment providers", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.5, "sonnet": 0.0}}
+{"company_id": "0001005210", "label": "oil & energy", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001005210", "label": "oil and gas", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001018963", "label": "aviation & aerospace", "votes": {"astra": 0.0, "gemini": 0.5, "opus": 0.5, "sol": 0.0, "sonnet": 0.5}}
+{"company_id": "0001018963", "label": "aviation and aerospace component manufacturing", "votes": {"astra": 0.0, "gemini": 1.0, "opus": 0.5, "sol": 0.5, "sonnet": 0.5}}
+{"company_id": "0001020214", "label": "biotechnology", "votes": {"astra": 0.0, "gemini": 1.0, "opus": 0.5, "sol": 0.5, "sonnet": 0.0}}
+{"company_id": "0001020214", "label": "biotechnology research", "votes": {"astra": 0.5, "gemini": 1.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001020214", "label": "research", "votes": {"astra": 0.0, "gemini": 0.5, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001035002", "label": "oil & energy", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.5}}
+{"company_id": "0001035002", "label": "oil and gas", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001042893", "label": "oil & energy", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.5}}
+{"company_id": "0001042893", "label": "oil and gas", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001050797", "label": "apparel & fashion", "votes": {"astra": 0.5, "gemini": 0.5, "opus": 0.5, "sol": 0.5, "sonnet": 0.5}}
+{"company_id": "0001050797", "label": "appliances, electrical, and electronics manufacturing", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001050797", "label": "consumer services", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001056903", "label": "hospitality", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001057352", "label": "real estate", "votes": {"astra": 0.0, "gemini": 1.0, "opus": 0.5, "sol": 0.5, "sonnet": 0.5}}
+{"company_id": "0001057352", "label": "real estate and equipment rental services", "votes": {"astra": 0.0, "gemini": 0.5, "opus": 0.0, "sol": 0.0, "sonnet": 0.5}}
+{"company_id": "0001287865", "label": "health care", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.5}}
+{"company_id": "0001287865", "label": "hospital & health care", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001287865", "label": "hospitals and health care", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001290677", "label": "mechanical or industrial engineering", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001314727", "label": "electrical/electronic manufacturing", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.5, "sol": 0.5, "sonnet": 0.0}}
+{"company_id": "0001341439", "label": "information technology & services", "votes": {"astra": 0.5, "gemini": 0.5, "opus": 0.0, "sol": 0.5, "sonnet": 0.0}}
+{"company_id": "0001341439", "label": "information technology and services", "votes": {"astra": 0.5, "gemini": 0.5, "opus": 0.5, "sol": 0.5, "sonnet": 0.0}}
+{"company_id": "0001341439", "label": "it services and it consulting", "votes": {"astra": 0.0, "gemini": 0.5, "opus": 0.5, "sol": 0.5, "sonnet": 0.0}}
+{"company_id": "0001356115", "label": "investment management", "votes": {"astra": 0.0, "gemini": 0.5, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001368265", "label": "oil & energy", "votes": {"astra": 0.0, "gemini": 0.5, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001368265", "label": "oil and gas", "votes": {"astra": 0.0, "gemini": 0.5, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001381197", "label": "business consulting and services", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001383312", "label": "financial services", "votes": {"astra": 0.5, "gemini": 1.0, "opus": 0.5, "sol": 0.5, "sonnet": 0.5}}
+{"company_id": "0001441816", "label": "information technology & services", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001443646", "label": "computer software", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001443646", "label": "market research", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001443646", "label": "software development", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.5, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001459200", "label": "information technology & services", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.5, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001459200", "label": "information technology and services", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.5, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001459200", "label": "it services and it consulting", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001481792", "label": "advertising services", "votes": {"astra": 1.0, "gemini": 1.0, "opus": 0.5, "sol": 1.0, "sonnet": 0.5}}
+{"company_id": "0001481792", "label": "marketing & advertising", "votes": {"astra": 1.0, "gemini": 1.0, "opus": 0.5, "sol": 1.0, "sonnet": 1.0}}
+{"company_id": "0001481792", "label": "marketing and advertising", "votes": {"astra": 1.0, "gemini": 1.0, "opus": 0.5, "sol": 1.0, "sonnet": 0.5}}
+{"company_id": "0001517175", "label": "food & beverages", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001517175", "label": "food and beverage services", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001519472", "label": "renewable energy power generation", "votes": {"astra": 0.0, "gemini": 0.5, "opus": 0.0, "sol": 0.0, "sonnet": 0.5}}
+{"company_id": "0001519472", "label": "renewables & environment", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001560327", "label": "it services and it consulting", "votes": {"astra": 0.5, "gemini": 0.5, "opus": 0.5, "sol": 0.5, "sonnet": 0.5}}
+{"company_id": "0001590955", "label": "information technology & services", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001617553", "label": "information technology & services", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001676238", "label": "information technology & services", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001705110", "label": "computer software", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001705110", "label": "information technology & services", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001705110", "label": "software development", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001760689", "label": "automotive", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001806837", "label": "information technology & services", "votes": {"astra": 0.0, "gemini": 0.5, "opus": 0.5, "sol": 0.0, "sonnet": 0.5}}
+{"company_id": "0001819994", "label": "aviation & aerospace", "votes": {"astra": 1.0, "gemini": 1.0, "opus": 1.0, "sol": 1.0, "sonnet": 1.0}}
+{"company_id": "0001819994", "label": "aviation and aerospace component manufacturing", "votes": {"astra": 1.0, "gemini": 1.0, "opus": 1.0, "sol": 1.0, "sonnet": 1.0}}
+{"company_id": "0001877939", "label": "defense & space", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001877939", "label": "defense and space manufacturing", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001901440", "label": "international trade and development", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0001901440", "label": "research", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "0002017206", "label": "real estate", "votes": {"astra": 0.5, "gemini": 1.0, "opus": 1.0, "sol": 0.5, "sonnet": 1.0}}
+{"company_id": "0002017206", "label": "real estate and equipment rental services", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.5, "sol": 0.0, "sonnet": 0.5}}
+{"company_id": "P043036496", "label": "computer software", "votes": {"astra": 1.0, "gemini": 1.0, "opus": 1.0, "sol": 1.0, "sonnet": 1.0}}
+{"company_id": "P043036496", "label": "information technology & services", "votes": {"astra": 0.0, "gemini": 0.5, "opus": 0.5, "sol": 0.5, "sonnet": 0.5}}
+{"company_id": "P043036496", "label": "it services and it consulting", "votes": {"astra": 0.0, "gemini": 0.5, "opus": 0.5, "sol": 0.0, "sonnet": 0.5}}
+{"company_id": "P043036496", "label": "software development", "votes": {"astra": 1.0, "gemini": 1.0, "opus": 1.0, "sol": 1.0, "sonnet": 1.0}}
+{"company_id": "P208583706", "label": "fund-raising", "votes": {"astra": 0.0, "gemini": 1.0, "opus": 0.5, "sol": 0.0, "sonnet": 0.5}}
+{"company_id": "P208583706", "label": "non-profit organization management", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "P208583706", "label": "philanthropic fundraising services", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.5, "sol": 0.0, "sonnet": 0.5}}
+{"company_id": "P371663146", "label": "accounting", "votes": {"astra": 0.0, "gemini": 0.5, "opus": 0.5, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "P452977391", "label": "facilities services", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "P452977391", "label": "renewables & environment", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "P454877508", "label": "health care", "votes": {"astra": 0.0, "gemini": 0.5, "opus": 0.5, "sol": 0.5, "sonnet": 0.5}}
+{"company_id": "P454877508", "label": "hospital & health care", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "P454877508", "label": "hospitals and health care", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "P461294512", "label": "information technology & services", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.5, "sol": 0.0, "sonnet": 0.5}}
+{"company_id": "P470994814", "label": "apparel & fashion", "votes": {"astra": 0.0, "gemini": 1.0, "opus": 0.5, "sol": 1.0, "sonnet": 0.5}}
+{"company_id": "P470994814", "label": "retail apparel and fashion", "votes": {"astra": 0.0, "gemini": 1.0, "opus": 0.5, "sol": 1.0, "sonnet": 0.5}}
+{"company_id": "P611707635", "label": "communications infrastructure", "votes": {"astra": 0.5, "gemini": 1.0, "opus": 0.5, "sol": 0.5, "sonnet": 1.0}}
+{"company_id": "P611707635", "label": "telecommunications", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "P731571695", "label": "building materials", "votes": {"astra": 0.0, "gemini": 0.5, "opus": 0.0, "sol": 0.0, "sonnet": 0.5}}
+{"company_id": "P731571695", "label": "wholesale building materials", "votes": {"astra": 0.0, "gemini": 0.5, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "P812565146", "label": "automotive", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.5, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "P812565146", "label": "motor vehicle manufacturing", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "P823174332", "label": "cloud computing", "votes": {"astra": 0.5, "gemini": 1.0, "opus": 0.5, "sol": 0.5, "sonnet": 0.5}}
+{"company_id": "P833184539", "label": "industrial machinery manufacturing", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "P833184539", "label": "mechanical or industrial engineering", "votes": {"astra": 0.0, "gemini": 0.5, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "P841698665", "label": "information technology", "votes": {"astra": 0.5, "gemini": 0.5, "opus": 0.5, "sol": 0.5, "sonnet": 0.5}}
+{"company_id": "P881055704", "label": "civil engineering", "votes": {"astra": 0.0, "gemini": 1.0, "opus": 0.5, "sol": 0.0, "sonnet": 1.0}}
+{"company_id": "P991938691", "label": "education administration programs", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}
+{"company_id": "P991938691", "label": "education management", "votes": {"astra": 0.0, "gemini": 0.0, "opus": 0.0, "sol": 0.0, "sonnet": 0.0}}

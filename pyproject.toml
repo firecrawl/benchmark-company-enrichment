@@ -1,6 +1,6 @@
 [project]
 name = "company-enrichment-benchmark"
-version = "1.0.0"
+version = "1.0.1"
 description = "Company Enrichment: a benchmark for company data providers (headquarters, industry, employees, founding year, LinkedIn page, ticker, revenue)"
 readme = "README.md"
 license = { text = "MIT" }

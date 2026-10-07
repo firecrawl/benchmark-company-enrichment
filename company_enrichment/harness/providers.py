@@ -25,7 +25,7 @@ SYSTEMS = {  # provider id -> how it is shown in results; tag "alexandria" = ava
     "apollo": {"name": "Apollo.io", "tag": "alexandria", "via": "Firecrawl Alexandria"},
     "fullenrich": {"name": "FullEnrich", "tag": "alexandria", "via": "Firecrawl Alexandria"},
     "datalegion": {"name": "Data Legion", "tag": "alexandria", "via": "Firecrawl Alexandria (Premium record)"},
-    "pdl": {"name": "People Data Labs", "tag": "soon", "via": "People Data Labs API"},
+    "pdl": {"name": "People Data Labs", "tag": "alexandria", "via": "Firecrawl Alexandria"},
     "ocean": {"name": "Ocean.io", "tag": None, "via": "Ocean.io API"},
     "contactout": {"name": "ContactOut", "tag": None, "via": "ContactOut API"},
 }

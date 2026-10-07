@@ -1,6 +1,6 @@
 {
   "benchmark": "Company Enrichment",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "snapshot": {
     "label": "October 2026 run",
     "date": "2026-10-02"
@@ -438,8 +438,8 @@
     },
     "People Data Labs": {
       "provider": "pdl",
-      "tag": "soon",
-      "via": "People Data Labs API",
+      "tag": "alexandria",
+      "via": "Firecrawl Alexandria",
       "run": "20261002T133905Z-pdl",
       "common": {
         "score": 0.806493,

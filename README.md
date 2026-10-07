@@ -2,7 +2,7 @@
 
 Compare company data providers on how accurately they fill in a company's profile across seven fields, from nothing but its website.
 
-This benchmark is run by Firecrawl. Apollo.io, FullEnrich and Data Legion are sold through [Firecrawl Alexandria](https://www.firecrawl.dev/alexandria), and People Data Labs is coming to it; Ocean.io and ContactOut are not. That is why the harness, a public half of the answer key and every answer-key correction are published here.
+This benchmark is run by Firecrawl. Apollo.io, People Data Labs, FullEnrich and Data Legion are available in [Firecrawl Alexandria](https://www.firecrawl.dev/alexandria); Ocean.io and ContactOut are not. That is why the harness, a public half of the answer key and every answer-key correction are published here.
 
 This repository ships a 102-company public sample (half of every group and size band). The rest is held back so no provider can tune to it.
 
@@ -12,13 +12,13 @@ This repository ships a 102-company public sample (half of every group and size 
 200 US companies: 150 public, 50 private. One lookup per company, the website domain as the only input. Run on October 2, 2026.
 <!-- dataset:end -->
 
-Common fields is the headline: the four fields scored by code alone (headquarters, employee count, founding year and LinkedIn page). All fields adds industry, which AI judges partly grade, and stock ticker and revenue, which only some providers return. Scores are the share of points, with 95% confidence intervals. `[alexandria]` providers are available through [Firecrawl Alexandria](https://www.firecrawl.dev/alexandria); `[soon]` is coming to it.
+Common fields is the headline: the four fields scored by code alone (headquarters, employee count, founding year and LinkedIn page). All fields adds industry, which AI judges partly grade, and stock ticker and revenue, which only some providers return. Scores are the share of points, with 95% confidence intervals. `[alexandria]` providers are available through [Firecrawl Alexandria](https://www.firecrawl.dev/alexandria).
 
 <!-- results:start -->
 | provider | common score | 95% CI | all fields | 95% CI | coverage | accuracy when answered | public sample (n=102) |
 |---|---|---|---|---|---|---|---|
 | Apollo.io `[alexandria]` | **89.3%** | [86.0%, 92.2%] | 81.6% | [78.3%, 84.5%] | 99% | 92% | 88.9% |
-| People Data Labs `[soon]` | 80.6% | [76.5%, 84.3%] | 72.0% | [68.0%, 75.5%] | 98% | 83% | 78.8% |
+| People Data Labs `[alexandria]` | 80.6% | [76.5%, 84.3%] | 72.0% | [68.0%, 75.5%] | 98% | 83% | 78.8% |
 | Ocean.io | 78.7% | [74.4%, 82.7%] | 64.9% | [61.3%, 68.2%] | 97% | 81% | 75.5% |
 | FullEnrich `[alexandria]` | 72.7% | [67.8%, 77.3%] | 59.6% | [55.1%, 63.6%] | 89% | 81% | 69.0% |
 | ContactOut | 72.7% | [68.4%, 76.8%] | 60.6% | [56.6%, 64.4%] | 88% | 83% | 69.3% |
@@ -40,7 +40,7 @@ Common fields is the headline: the four fields scored by code alone (headquarter
 
 Gaps are tested with a paired bootstrap over companies and a Holm correction across all 15 pairs of providers.
 
-The second table shows every field for all 6 providers. The best value in each column is highlighted. Columns marked extra are left out of the headline score, and "not offered" means the provider does not return that field, which counts as 0. Next to each field in the second table is the number of the 200 companies it is graded on. Coverage, accuracy when answered and the public-sample column are on the four common fields. The public-sample column is what you can reproduce from this repository, and the number to compare your own run with. Data Legion is scored on its Premium record, its fullest company record. Each provider is graded on its own employee estimate, never on a LinkedIn member count it passes through.
+The second table shows every field for all 6 providers. The best value in each column is highlighted. Columns marked extra are left out of the headline score, and "not offered" means the provider does not return that field, which counts as 0. Next to each field in the second table is the number of the 200 companies it is graded on. Coverage, accuracy when answered and the public-sample column are on the four common fields. The public-sample column is what you can reproduce from this repository, and the number to compare your own run with. Data Legion is scored on its Premium record, its fullest company record. Each provider is graded on its own employee count. Ocean.io's LinkedIn count is used only when its own estimate is empty, as the rules set before the run say; that happened for 1 of the 200 companies.
 
 ### Answer-key corrections
 
@@ -69,8 +69,8 @@ uv run company-enrichment-report
 ```
 
 - `--provider`: `apollo`, `fullenrich`, `datalegion` (through Firecrawl Alexandria, `FIRECRAWL_API_KEY`), `pdl`
-  (`PDL_API_KEY`), `ocean` (`OCEAN_API_KEY`), `contactout` (`CONTACTOUT_API_KEY`). People Data Labs, Ocean.io and
-  ContactOut are called through their own APIs, so running them needs your own API key for each. Drop `--limit` for
+  (`PDL_API_KEY`), `ocean` (`OCEAN_API_KEY`), `contactout` (`CONTACTOUT_API_KEY`). This harness calls People Data Labs,
+  Ocean.io and ContactOut through their own APIs, so running them needs your own API key for each. Drop `--limit` for
   the whole public sample.
 - Before any call, a preflight looks up three probe companies (not in the answer key) and checks that the provider
   still returns every field the benchmark reads, as listed in `harness/fields_manifest.json`. If a provider renamed a
@@ -132,7 +132,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) to submit a score for the table.
 
 A missing answer, an error or a field the provider does not offer scores 0, so the score reflects coverage as well as accuracy. A record about a different company, such as the parent, scores 0 on every field.
 
-**How providers are called**. Every provider gets the same input, the company's website domain, in one lookup per company with default settings. Apollo.io, FullEnrich and Data Legion are called through Firecrawl Alexandria; People Data Labs, Ocean.io and ContactOut through their own APIs. In this run, People Data Labs was reached through Firecrawl Alexandria's People Data Labs capability, which calls the same PDL company enrichment API; a direct call returns the same fields. Each provider is scored on its fullest company record. Every call in the run succeeded on the first try; none failed or was rate-limited.
+**How providers are called**. Every provider gets the same input, the company's website domain, in one lookup per company with default settings. Apollo.io, People Data Labs, FullEnrich and Data Legion are called through Firecrawl Alexandria; Ocean.io and ContactOut through their own APIs. The harness in this repository calls People Data Labs directly, with your own key: Alexandria's People Data Labs capability calls the same PDL company enrichment API and returns the same fields. Each provider is scored on its fullest company record. Every call in the run succeeded on the first try; none failed or was rate-limited.
 
 **The answer key**. Every value comes from SEC filings, federal records or the company's own website, with the exact words it was taken from. A field with no primary source is not graded for any provider. The key was frozen before any provider was called. Two kinds of change came after the calls, applied to every provider alike: each LinkedIn address a provider returned was resolved, and the ones that lead to the company's own page (its numeric page ID or an older address) were added to the key; and the corrections listed above.
 
@@ -192,6 +192,7 @@ produced every number above · `company_enrichment/tests/` offline tests
 
 ## Changelog
 
+- October 7, 2026: People Data Labs is now available in Firecrawl Alexandria. Corrected how the repository README describes Ocean.io's employee count.
 - October 2, 2026: First published run. 6 providers on 200 US companies (150 public, 50 private), scored on four common fields and three extra fields: industry, ticker and revenue. Answer-key corrections made after the provider calls are listed in the repository.
 
 ## License

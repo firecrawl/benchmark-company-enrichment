@@ -11,6 +11,7 @@ requires-python = ">=3.11"
 # wrong-company verdict. Provider APIs are reached over plain HTTP: adding a provider needs a URL, not a dependency.
 dependencies = [
     "tldextract==5.3.2",   # registrable domains, from the bundled suffix list (no network)
+    "certifi>=2026.10.19",   # CA bundle floor for the HTTPS provider calls
 ]
 
 [project.optional-dependencies]

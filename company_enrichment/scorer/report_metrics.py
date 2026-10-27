@@ -48,7 +48,15 @@ def find_runs(root=RUNS, labels=None):
 
 def load_run(d):
     meta = json.loads((Path(d) / "meta.json").read_text())
-    recs = {p.stem: json.loads(p.read_text()) for p in (Path(d) / "records").glob("*.json")}
+    recs = {}
+    for path in (Path(d) / "records").glob("*.json"):
+        rec = json.loads(path.read_text())
+        # Older saved responses may omit identity metadata. Explicit metadata,
+        # however, must agree with the filename and containing provider run.
+        for field, expected in (("company_id", path.stem), ("provider", meta["provider"])):
+            if field in rec and rec[field] != expected:
+                raise ValueError(f"record {path}: {field} {rec[field]!r} does not match {expected!r}")
+        recs[path.stem] = rec
     return meta, recs
 
 

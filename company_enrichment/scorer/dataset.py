@@ -22,7 +22,17 @@ def path(name=DEFAULT):
 def load(name=DEFAULT):
     p = path(name)
     if not p.exists(): raise SystemExit(f"dataset {p} not found (shipped: {sorted(x.stem for x in GT.glob('companies_*.jsonl'))})")
-    return [json.loads(line) for line in p.read_text().splitlines() if line.strip()]
+    rows, first_line = [], {}
+    for line_number, line in enumerate(p.read_text().splitlines(), 1):
+        if not line.strip(): continue
+        row = json.loads(line)
+        cid = row["id"]
+        if cid in first_line:
+            raise ValueError(f"dataset {p}: duplicate company id {cid!r} at line {line_number} "
+                             f"(first seen at line {first_line[cid]})")
+        first_line[cid] = line_number
+        rows.append(row)
+    return rows
 
 
 def key(row):

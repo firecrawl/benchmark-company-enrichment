@@ -24,7 +24,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from company_enrichment.harness import runner  # noqa: E402
-from company_enrichment.run_eval import load_env  # noqa: E402
+from company_enrichment.run_eval import load_env, positive_int  # noqa: E402
 from company_enrichment.scorer import dataset  # noqa: E402
 
 
@@ -33,7 +33,7 @@ def main():
     ap.add_argument("--name", required=True, help="label for your provider, e.g. 'yourco'")
     ap.add_argument("--endpoint", help="your URL: GET with {domain} in it, or POST {\"domain\": ...}")
     ap.add_argument("--auth", help="Authorization header, e.g. 'Bearer <key>'")
-    ap.add_argument("--limit", type=int, help="first N companies only, for a smoke run")
+    ap.add_argument("--limit", type=positive_int, help="first N companies only (N > 0), for a smoke run")
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--resume", action="store_true", help="continue your newest run; finished companies are skipped")
     ap.add_argument("--report-only", action="store_true", help="skip calling; re-score the run already on disk")

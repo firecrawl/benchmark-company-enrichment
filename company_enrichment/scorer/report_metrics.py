@@ -226,7 +226,10 @@ def P(x, d=1):
 
 def markdown(res):
     """The README's results tables."""
-    order = sorted(res["systems"], key=lambda s: -(res["systems"][s]["common"]["score"] or -1))
+    def score_order(system):
+        score = res["systems"][system]["common"]["score"]
+        return (score is None, -score if score is not None else 0)
+    order = sorted(res["systems"], key=score_order)
     tag = lambda s: {"alexandria": " `[alexandria]`", "soon": " `[soon]`"}.get(res["systems"][s].get("tag"), "")
     pub = all(res["systems"][s].get("public_sample") for s in order)
     n_pub = res["dataset"].get("public_sample") if isinstance(res.get("dataset"), dict) else None
@@ -235,7 +238,7 @@ def markdown(res):
     best = order[0]
     for s in order:
         x = res["systems"][s]; c, a = x["common"], x["all_fields"]
-        b = (lambda v: f"**{v}**") if s == best else (lambda v: v)
+        b = (lambda v: f"**{v}**") if s == best and c["score"] is not None else (lambda v: v)
         L.append(f"| {s}{tag(s)} | {b(P(c['score']))} | [{P(c['ci95'][0])}, {P(c['ci95'][1])}] | {P(a['score'])} | "
                  f"[{P(a['ci95'][0])}, {P(a['ci95'][1])}] | {P(x['coverage'], 0)} | {P(x['accuracy_when_answered'], 0)} |"
                  + (f" {P(x['public_sample']['common']['score'])} |" if pub else ""))
@@ -254,7 +257,12 @@ def markdown(res):
             cells.append(f"**{v}**" if fx["offered"] and fx["score"] == top[f] else v)
         L.append(f"| {s} | " + " | ".join(cells) + " |")
     pair = {frozenset((p["a"], p["b"])): p for p in res["pairwise"]["common"]}
-    tied = [s for s in order[1:] if not pair[frozenset((best, s))]["significant"]]
+    tied = [s for s in order[1:] if frozenset((best, s)) in pair
+            and not pair[frozenset((best, s))]["significant"]]
+    unavailable = [s for s in order[1:] if frozenset((best, s)) not in pair]
+    if unavailable:
+        L += ["", f"The paired common-score comparison is unavailable for {best} versus {' and '.join(unavailable)}; "
+                  "no significance conclusion can be drawn for these comparisons."]
     if tied:
         L += ["", f"On the common score {best}'s lead over {' and '.join(tied)} is not statistically significant "
                   f"(paired bootstrap, Holm-corrected over {len(pair)} pair{'s' if len(pair) != 1 else ''}): the data cannot separate them."]

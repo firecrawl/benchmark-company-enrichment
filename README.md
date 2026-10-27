@@ -77,6 +77,8 @@ uv run company-enrichment-report
   field, the run stops instead of quietly scoring 0 on it.
 - The report scores the newest run of every label under `company_enrichment/runs/`; `--label apollo,ocean` picks some,
   `--out results.json` saves them, `--verdicts verdicts.csv` writes one row per company, provider and field.
+  If selected runs have no common scored companies, the report still saves their exclusions and unavailable scores;
+  a missing paired comparison is explicitly marked unavailable without a significance claim.
 - A US city missing from the metro table can only score on an exact match; `--geocode` looks it up (free, slow). An
   industry label nobody has graded is left out and listed; `--judge` grades it (paid, about $0.02 a label).
 

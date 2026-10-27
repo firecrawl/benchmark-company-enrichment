@@ -280,10 +280,16 @@ def main():
     runs_root = Path(a.runs)
     found = find_runs(runs_root, a.label.split(",") if a.label else None)
     if not found: raise SystemExit(f"no runs under {runs_root}: run company-enrichment --provider <id> first")
-    runs, smeta = {}, {}
+    runs, smeta, identities = {}, {}, {}
     for label, d in found.items():
         meta, recs = load_run(d)
         name = system_name(meta)
+        if name in identities:
+            prior_label, prior_dir = identities[name]
+            raise SystemExit(f"run labels {prior_label!r} ({prior_dir.name}) and {label!r} ({d.name}) "
+                             f"resolve to the same display name {name!r}; "
+                             "use distinct run labels when collecting these providers")
+        identities[name] = (label, d)
         runs[name] = (meta["provider"], recs)
         sm = providers.SYSTEMS.get(meta["provider"], {}) if name != meta["label"] else {}
         smeta[name] = {"provider": meta["provider"], "tag": sm.get("tag"), "via": sm.get("via", "external endpoint"),

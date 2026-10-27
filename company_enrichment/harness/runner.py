@@ -10,7 +10,7 @@ already have an answer on disk and calls the failed and rate-limited ones again.
 """
 import json
 import time
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 from company_enrichment.harness import providers
@@ -19,6 +19,13 @@ RUNS = Path(__file__).resolve().parents[1] / "runs"
 VERSION = "1"
 RETRY_WAIT_S = 60   # a failed call is retried once, a minute later
 RATE_LIMIT_ROUNDS = 60   # a rate-limited call is re-sent until answered: up to an hour of rounds, RETRY_WAIT_S apart
+
+
+def _write_json(path, value):
+    """Replace a checkpoint atomically so interruption cannot truncate an answer."""
+    temporary = path.with_suffix(".json.tmp")
+    temporary.write_text(json.dumps(value, indent=1))
+    temporary.replace(path)
 
 
 def unanswered(status, error):
@@ -41,7 +48,7 @@ def run(provider, rows, label=None, out_root=RUNS, limit=None, workers=4, resume
     meta = {"provider": provider, "label": label, "dataset": dataset, "harness_version": VERSION,
             "started_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), **(extra_meta or {})}
     if (d / "meta.json").exists(): meta = {**json.loads((d / "meta.json").read_text()), "resumed_at": meta["started_at"]}
-    (d / "meta.json").write_text(json.dumps(meta, indent=1))
+    _write_json(d / "meta.json", meta)
     rows = rows[:limit] if limit else rows
     on_disk = {p.stem: json.loads(p.read_text()) for p in (d / "records").glob("*.json")}
     done = {cid for cid, rec in on_disk.items() if not unanswered(rec.get("http_status"), rec.get("error"))}  # the rest are called again
@@ -56,30 +63,38 @@ def run(provider, rows, label=None, out_root=RUNS, limit=None, workers=4, resume
                    "latency_ms": res.latency_ms, "cost": res.cost, "error": res.error, "route": res.route,
                    "ran_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "response": res.response}
             if first is not None: rec["first_attempt"], rec["attempts"] = first, attempts   # README "Calling providers"
-            (d / "records" / f"{cid}.json").write_text(json.dumps(rec, indent=1))
+            _write_json(d / "records" / f"{cid}.json", rec)
             err = f" ERR {str(res.error)[:60]}" if res.error else ""
             print(f"  {cid:12} {dom:30} {res.http_status} {'' if res.latency_ms is None else str(res.latency_ms) + 'ms'}{err}", flush=True)
 
     def call_all(doms):
-        if provider in providers.BATCH: return providers.call(provider, doms)
-        out = {}
-        with ThreadPoolExecutor(max_workers=workers) as ex:
-            for o in ex.map(lambda dom: providers.call(provider, [dom]), doms): out.update(o)
-        return out
+        if provider in providers.BATCH:
+            size = providers.BATCH[provider]
+            for i in range(0, len(doms), size):
+                yield providers.call(provider, doms[i:i + size])
+        else:
+            with ThreadPoolExecutor(max_workers=workers) as ex:
+                futures = [ex.submit(providers.call, provider, [dom]) for dom in doms]
+                for future in as_completed(futures):
+                    yield future.result()
 
-    first = call_all(list(by_domain))
-    latest, attempts = dict(first), {dom: 1 for dom in first}
-    for dom, res in first.items():
-        if not unanswered(res.http_status, res.error): save(dom, res)
-    # a failed call gets one more try; a rate-limited one is re-sent until it is answered or RATE_LIMIT_ROUNDS is reached
+    first, latest, attempts = {}, {}, {}
+    for results in call_all(list(by_domain)):
+        for dom, res in results.items():
+            first[dom] = latest[dom] = res
+            attempts[dom] = 1
+            save(dom, res)
+    # Checkpoint failures too: a stopped run can resume them without losing the
+    # completed answers from other domains. Retry policy and scores are unchanged.
     again = [dom for dom, res in first.items() if unanswered(res.http_status, res.error)]
     while again:
         print(f"{provider}: {len(again)} calls without an answer, sending again in {RETRY_WAIT_S}s", flush=True)
         time.sleep(RETRY_WAIT_S)
-        for dom, res in call_all(again).items():
-            latest[dom], attempts[dom] = res, attempts[dom] + 1
+        for results in call_all(again):
+            for dom, res in results.items():
+                latest[dom], attempts[dom] = res, attempts[dom] + 1
+                initial = first[dom]
+                save(dom, res, {"http_status": initial.http_status, "error": initial.error,
+                                "latency_ms": initial.latency_ms}, attempts[dom])
         again = [dom for dom in again if providers.rate_limited(latest[dom].error) and attempts[dom] <= RATE_LIMIT_ROUNDS]
-    for dom, res in first.items():
-        if unanswered(res.http_status, res.error):
-            save(dom, latest[dom], {"http_status": res.http_status, "error": res.error, "latency_ms": res.latency_ms}, attempts[dom])
     return d

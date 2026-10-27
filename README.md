@@ -75,6 +75,8 @@ uv run company-enrichment-report
 - Before any call, a preflight looks up three probe companies (not in the answer key) and checks that the provider
   still returns every field the benchmark reads, as listed in `harness/fields_manifest.json`. If a provider renamed a
   field, the run stops instead of quietly scoring 0 on it.
+- Completed calls are saved as they finish, including each completed batch and failed attempt before a retry wait.
+  Checkpoints replace JSON files atomically; `--resume` retains completed answers after an interrupted run.
 - The report scores the newest run of every label under `company_enrichment/runs/`; `--label apollo,ocean` picks some,
   `--out results.json` saves them, `--verdicts verdicts.csv` writes one row per company, provider and field.
 - A US city missing from the metro table can only score on an exact match; `--geocode` looks it up (free, slow). An

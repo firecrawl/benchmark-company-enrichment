@@ -22,6 +22,17 @@ from company_enrichment.harness import preflight, providers, runner  # noqa: E40
 from company_enrichment.scorer import dataset  # noqa: E402
 
 
+def positive_int(value):
+    """CLI bounds must be explicit: zero must never mean an unlimited paid run."""
+    try:
+        parsed = int(value)
+    except ValueError:
+        raise argparse.ArgumentTypeError("must be a positive integer") from None
+    if parsed <= 0:
+        raise argparse.ArgumentTypeError("must be a positive integer")
+    return parsed
+
+
 def load_env():
     f = ROOT.parent / ".env"
     if not f.exists(): return
@@ -37,7 +48,7 @@ def main():
     ap.add_argument("--provider", required=True, choices=sorted(providers.ROUTES))
     ap.add_argument("--dataset", default=dataset.DEFAULT, help="file stem under company_enrichment/gt/ (default: the public sample)")
     ap.add_argument("--label", help="run directory suffix (default: the provider id; use your company name for --provider external)")
-    ap.add_argument("--limit", type=int, help="first N companies only, for a smoke run")
+    ap.add_argument("--limit", type=positive_int, help="first N companies only (N > 0), for a smoke run")
     ap.add_argument("--workers", type=int, default=4, help="concurrent calls for one-domain-per-call providers")
     ap.add_argument("--output-dir", default=str(runner.RUNS))
     ap.add_argument("--resume", action="store_true", help="continue the newest run with the same label; finished companies are skipped")

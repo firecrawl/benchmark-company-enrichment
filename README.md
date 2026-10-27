@@ -75,6 +75,10 @@ uv run company-enrichment-report
 - Before any call, a preflight looks up three probe companies (not in the answer key) and checks that the provider
   still returns every field the benchmark reads, as listed in `harness/fields_manifest.json`. If a provider renamed a
   field, the run stops instead of quietly scoring 0 on it.
+- Each fresh run reserves its own directory, including runs started in the same second. `--resume` reuses the newest
+  run with the same literal label and rejects a different provider, dataset, or domain for an existing company ID.
+  External runs also pin a hash of the endpoint URL (never the URL or credentials); changing credentials in the auth
+  header is allowed. An older external run without this fingerprint needs a fresh run when an endpoint is configured.
 - The report scores the newest run of every label under `company_enrichment/runs/`; `--label apollo,ocean` picks some,
   `--out results.json` saves them, `--verdicts verdicts.csv` writes one row per company, provider and field.
 - A US city missing from the metro table can only score on an exact match; `--geocode` looks it up (free, slow). An

@@ -8,7 +8,9 @@ both attempts are kept. A rate-limited call was not executed, so it is sent agai
 resumed run sends it again. A resumed run skips companies that
 already have an answer on disk and calls the failed and rate-limited ones again.
 """
+import hashlib
 import json
+import os
 import time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -29,21 +31,46 @@ def unanswered(status, error):
 def run_dir(label, out_root=RUNS, resume=False):
     out_root = Path(out_root)
     if resume:
-        prior = sorted(p for p in out_root.glob(f"*-{label}") if (p / "meta.json").exists())
+        prior = sorted(p.parent for p in out_root.glob("*/meta.json")
+                       if json.loads(p.read_text()).get("label") == label)
         if prior: return prior[-1]
-    return out_root / f"{time.strftime('%Y%m%dT%H%M%SZ', time.gmtime())}-{label}"
+    out_root.mkdir(parents=True, exist_ok=True)
+    # Reserve exclusively: even concurrent runs must never share responses. Keep the
+    # time before the label so existing report/resume discovery stays chronological.
+    while True:
+        d = out_root / f"{time.strftime('%Y%m%dT%H%M%SZ', time.gmtime())}-{time.time_ns():020d}-{label}"
+        try:
+            d.mkdir()
+            return d
+        except FileExistsError:
+            continue
 
 
 def run(provider, rows, label=None, out_root=RUNS, limit=None, workers=4, resume=False, dataset=None, extra_meta=None):
     label = label or provider
     d = run_dir(label, out_root, resume)
     (d / "records").mkdir(parents=True, exist_ok=True)
-    meta = {"provider": provider, "label": label, "dataset": dataset, "harness_version": VERSION,
-            "started_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), **(extra_meta or {})}
-    if (d / "meta.json").exists(): meta = {**json.loads((d / "meta.json").read_text()), "resumed_at": meta["started_at"]}
-    (d / "meta.json").write_text(json.dumps(meta, indent=1))
+    meta = {**(extra_meta or {}), "provider": provider, "label": label, "dataset": dataset, "harness_version": VERSION,
+            "started_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
+    if provider == "external":
+        # URLs may contain API keys. Persist only a fingerprint; auth rotation is
+        # allowed, changing the endpoint under an existing run is not.
+        endpoint = os.environ.get("CE_EXT_URL")
+        meta["endpoint_sha256"] = hashlib.sha256(endpoint.encode()).hexdigest() if endpoint else None
+    prior = json.loads((d / "meta.json").read_text()) if (d / "meta.json").exists() else None
     rows = rows[:limit] if limit else rows
     on_disk = {p.stem: json.loads(p.read_text()) for p in (d / "records").glob("*.json")}
+    if prior is not None:
+        identity = ["provider", "dataset"] + (["endpoint_sha256"] if provider == "external" else [])
+        for key in identity:
+            if prior.get(key) != meta[key]:
+                raise ValueError(f"cannot resume {d}: {key} differs ({prior.get(key)!r} != {meta[key]!r})")
+        for row in rows:
+            saved = on_disk.get(row["id"])
+            if saved is not None and saved.get("domain") != row["input"]["domain"]:
+                raise ValueError(f"cannot resume {d}: domain differs for {row['id']}")
+        meta = {**prior, "resumed_at": meta["started_at"]}
+    (d / "meta.json").write_text(json.dumps(meta, indent=1))
     done = {cid for cid, rec in on_disk.items() if not unanswered(rec.get("http_status"), rec.get("error"))}  # the rest are called again
     todo = [r for r in rows if r["id"] not in done]
     print(f"{provider}: {len(todo)} of {len(rows)} companies to call -> {d}", flush=True)

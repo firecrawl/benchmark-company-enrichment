@@ -142,16 +142,18 @@ def ocean(domains):
         batch = domains[i:i + BATCH["ocean"]]
         status, body, ms = _post("https://api.ocean.io/v2/lookup/companies", {"domains": batch},
                                  {"X-Api-Token": _key("ocean")}, timeout=600)
-        found = {}
+        found, redirect = {}, {}
         if status == 200 and isinstance(body, dict):
-            redirect = {v: k for k, v in (body.get("redirectMap") or {}).items()}
+            redirect = body.get("redirectMap") or {}
             for c in body.get("companies") or []:
                 comp = c.get("company") if "company" in c else c
                 q = c.get("query") or c.get("domain") or (comp or {}).get("domain")
-                found[redirect.get(q, q)] = comp
+                found[q] = comp
         for d in batch:
-            out[d] = Result(status, found.get(d), ms if len(batch) == 1 else None,
-                            {"ocean_results": 1 if found.get(d) else 0}, None if status == 200 else body, "Ocean.io API (batch)")
+            # Several requested aliases may share one canonical company.
+            company = found.get(d, found.get(redirect.get(d)))
+            out[d] = Result(status, company, ms if len(batch) == 1 else None,
+                            {"ocean_results": 1 if company else 0}, None if status == 200 else body, "Ocean.io API (batch)")
     return out
 
 

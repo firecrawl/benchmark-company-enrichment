@@ -179,7 +179,7 @@ def external(domains):
     out = {}
     for d in domains:
         if "{domain}" in url:
-            status, body, ms = _get(url.replace("{domain}", d), auth)
+            status, body, ms = _get(url.replace("{domain}", urllib.parse.quote(d, safe="")), auth)
         else:
             status, body, ms = _post(url, {"domain": d}, auth)
         out[d] = Result(status, body if status == 200 else None, ms, {}, None if status == 200 else body, "external endpoint")

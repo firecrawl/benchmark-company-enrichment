@@ -57,16 +57,24 @@ class Result:
     route: str = "direct"
 
 
+def _response_body(raw):
+    """Keep the HTTP response even when it is not JSON, rather than inventing a transport failure."""
+    try:
+        return json.loads(raw or b"null")
+    except (ValueError, UnicodeError):
+        return raw.decode("utf-8", errors="replace")
+
+
 def _post(url, body, headers, timeout=120):
     req = urllib.request.Request(url, data=json.dumps(body).encode(), method="POST",
                                  headers={"Content-Type": "application/json", "Accept": "application/json", **headers})
     t = time.perf_counter()
     try:
         with urllib.request.urlopen(req, timeout=timeout) as r:
-            status, out = r.status, json.loads(r.read() or b"null")
+            status, out = r.status, _response_body(r.read())
     except urllib.error.HTTPError as e:
         status = e.code
-        try: out = json.loads(e.read())
+        try: out = _response_body(e.read())
         except Exception: out = {"error": str(e)}
     except Exception as e:
         status, out = 0, {"error": repr(e)}
@@ -78,10 +86,10 @@ def _get(url, headers, timeout=120):
     t = time.perf_counter()
     try:
         with urllib.request.urlopen(req, timeout=timeout) as r:
-            status, out = r.status, json.loads(r.read() or b"null")
+            status, out = r.status, _response_body(r.read())
     except urllib.error.HTTPError as e:
         status = e.code
-        try: out = json.loads(e.read())
+        try: out = _response_body(e.read())
         except Exception: out = {"error": str(e)}
     except Exception as e:
         status, out = 0, {"error": repr(e)}
@@ -108,7 +116,7 @@ def alexandria(provider, domains):
             item = (((body or {}).get("data") or {}).get("alexandria") or [{}])[0] if isinstance(body, dict) else {}
             if rate_limited(item.get("error")) and attempt < 5: time.sleep(2 * (attempt + 1)); continue
             break
-        err = item.get("error") or ((body or {}).get("error") if status != 200 and isinstance(body, dict) else None)
+        err = item.get("error") or (((body or {}).get("error") if isinstance(body, dict) else body) if status != 200 else None)
         out[d] = Result(status, item.get("data"), ms, {"credits": item.get("creditsCost") or 0}, err, "Firecrawl Alexandria")
     return out
 

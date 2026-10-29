@@ -45,6 +45,8 @@ def main():
     ap.add_argument("--auth", help="--provider external: Authorization header value, e.g. 'Bearer <key>'")
     ap.add_argument("--skip-preflight", action="store_true", help="skip the field check (not for a published run)")
     a = ap.parse_args()
+    if a.workers <= 0:
+        ap.error("--workers must be a positive integer")
     load_env()
     if a.endpoint: os.environ["CE_EXT_URL"] = a.endpoint
     if a.auth: os.environ["CE_EXT_AUTH"] = a.auth

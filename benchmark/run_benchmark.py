@@ -39,6 +39,8 @@ def main():
     ap.add_argument("--report-only", action="store_true", help="skip calling; re-score the run already on disk")
     ap.add_argument("--out", help="write your results JSON here")
     a = ap.parse_args()
+    if a.workers <= 0:
+        ap.error("--workers must be a positive integer")
     load_env()
     if not a.report_only:
         if not (a.endpoint or os.environ.get("CE_EXT_URL")): sys.exit("give --endpoint: your provider, called like every published one")

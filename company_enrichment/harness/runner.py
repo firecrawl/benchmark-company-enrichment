@@ -35,6 +35,8 @@ def run_dir(label, out_root=RUNS, resume=False):
 
 
 def run(provider, rows, label=None, out_root=RUNS, limit=None, workers=4, resume=False, dataset=None, extra_meta=None):
+    if workers <= 0:
+        raise ValueError("workers must be a positive integer")
     label = label or provider
     d = run_dir(label, out_root, resume)
     (d / "records").mkdir(parents=True, exist_ok=True)

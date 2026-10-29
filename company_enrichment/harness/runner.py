@@ -78,7 +78,8 @@ def run(provider, rows, label=None, out_root=RUNS, limit=None, workers=4, resume
         time.sleep(RETRY_WAIT_S)
         for dom, res in call_all(again).items():
             latest[dom], attempts[dom] = res, attempts[dom] + 1
-        again = [dom for dom in again if providers.rate_limited(latest[dom].error) and attempts[dom] <= RATE_LIMIT_ROUNDS]
+        again = [dom for dom in again if (latest[dom].http_status == 429 or providers.rate_limited(latest[dom].error))
+                 and attempts[dom] <= RATE_LIMIT_ROUNDS]
     for dom, res in first.items():
         if unanswered(res.http_status, res.error):
             save(dom, latest[dom], {"http_status": res.http_status, "error": res.error, "latency_ms": res.latency_ms}, attempts[dom])

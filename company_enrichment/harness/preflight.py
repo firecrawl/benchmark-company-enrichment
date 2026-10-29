@@ -9,7 +9,9 @@ a field fails here, loudly, instead of scoring 0 on that field for every company
 listed too, so a new field is noticed. Costs one lookup per probe (three per provider). A passing check is remembered
 for 24 hours in runs/preflight_<provider>.json.
 """
+import hashlib
 import json
+import os
 import re
 import sys
 import time
@@ -74,14 +76,29 @@ def check(provider, probes=None, responses=None):
             "checked_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
 
 
+def cache_key(provider):
+    """Bind a cached pass to the checks and configurable transport that produced it."""
+    contract = {"provider": provider, "spec": MANIFEST["providers"][provider], "probes": MANIFEST["probe_domains"]}
+    if provider in providers.ALEXANDRIA:
+        contract["endpoint"] = (os.environ.get("FIRECRAWL_API_URL") or "https://api.firecrawl.dev").rstrip("/")
+    # Endpoints can contain credentials. Keep only an opaque fingerprint on disk.
+    return hashlib.sha256(json.dumps(contract, sort_keys=True).encode()).hexdigest()
+
+
 def run(provider, runs=RUNS, force=False):
     """Preflight with a 24-hour memory of a pass. Exits on failure."""
     if not MANIFEST["providers"].get(provider, {}).get("required"): return {"provider": provider, "ok": True, "skipped": "nothing to check"}
     f = Path(runs) / f"preflight_{provider}.json"
+    identity = cache_key(provider)
     if not force and f.exists():
-        prev = json.loads(f.read_text())
-        if prev.get("ok") and time.time() - f.stat().st_mtime < FRESH_S: return prev
-    rep = check(provider)
+        try:
+            prev = json.loads(f.read_text())
+            if (isinstance(prev, dict) and prev.get("provider") == provider and prev.get("cache_key") == identity
+                    and prev.get("ok") and time.time() - f.stat().st_mtime < FRESH_S):
+                return prev
+        except (OSError, ValueError):
+            pass  # A damaged or concurrently replaced cache is a miss, not a provider failure.
+    rep = {**check(provider), "cache_key": identity}
     f.parent.mkdir(parents=True, exist_ok=True)
     f.write_text(json.dumps(rep, indent=1))
     print(f"preflight {provider}: {'ok' if rep['ok'] else 'FAILED'} ({len(rep['answered'])}/{len(rep['probes'])} probes answered, "

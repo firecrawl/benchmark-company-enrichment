@@ -72,16 +72,23 @@ jobs:
         run: uv sync
       - name: Run provider
         env:
+          BENCHMARK_PROVIDER: ${{ inputs.provider }}
+          BENCHMARK_LIMIT: ${{ inputs.limit }}
           FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
           PDL_API_KEY: ${{ secrets.PDL_API_KEY }}
           OCEAN_API_KEY: ${{ secrets.OCEAN_API_KEY }}
           CONTACTOUT_API_KEY: ${{ secrets.CONTACTOUT_API_KEY }}
         run: |
-          uv run company-enrichment --provider "${{ inputs.provider }}" \
-            ${{ inputs.limit && format('--limit {0}', inputs.limit) || '' }} \
-            --label "ci-${{ inputs.provider }}"
+          args=(--provider "$BENCHMARK_PROVIDER")
+          if [[ -n "$BENCHMARK_LIMIT" ]]; then
+            args+=(--limit "$BENCHMARK_LIMIT")
+          fi
+          args+=(--label "ci-$BENCHMARK_PROVIDER")
+          uv run company-enrichment "${args[@]}"
       - name: Report
-        run: uv run company-enrichment-report --label "ci-${{ inputs.provider }}" --out results-ci.json
+        env:
+          BENCHMARK_PROVIDER: ${{ inputs.provider }}
+        run: uv run company-enrichment-report --label "ci-$BENCHMARK_PROVIDER" --out results-ci.json
       - uses: actions/upload-artifact@v4
         with:
           name: company-enrichment-${{ inputs.provider }}

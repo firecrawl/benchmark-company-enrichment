@@ -154,4 +154,6 @@ def judge(items, out_path):
                         print(f"  {name} {it['id']}: {e!r}"[:160])
             fh.write(json.dumps({"company_id": it["company_id"], "label": it["label"].strip().lower(), "votes": votes,
                                  "prompt_sha256": PROMPT_SHA}) + "\n")
+            # A later item can be interrupted after these paid votes completed.
+            fh.flush()
             print(f"  judged {it['id']}: {votes}")
